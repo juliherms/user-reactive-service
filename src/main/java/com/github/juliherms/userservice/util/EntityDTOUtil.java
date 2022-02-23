@@ -1,5 +1,6 @@
 package com.github.juliherms.userservice.util;
 
+import com.github.juliherms.userservice.dto.TransactionRequestDTO;
 import com.github.juliherms.userservice.dto.TransactionResponseDTO;
 import com.github.juliherms.userservice.dto.TransactionStatus;
 import com.github.juliherms.userservice.dto.UserDTO;
@@ -23,7 +24,7 @@ public class EntityDTOUtil {
         return user;
     }
 
-    public static UserTransaction toEntity(TransactionResponseDTO requestDTO){
+    public static UserTransaction toEntity(TransactionRequestDTO requestDTO){
         UserTransaction ut = new UserTransaction();
         ut.setUserId(requestDTO.getUserId());
         ut.setAmount(requestDTO.getAmount());
@@ -31,7 +32,7 @@ public class EntityDTOUtil {
         return ut;
     }
 
-    public static  TransactionResponseDTO toDTO(TransactionResponseDTO requestDTO, TransactionStatus status){
+    public static  TransactionResponseDTO toDTO(TransactionRequestDTO requestDTO, TransactionStatus status){
         TransactionResponseDTO responseDTO = new TransactionResponseDTO();
         responseDTO.setAmount(requestDTO.getAmount());
         responseDTO.setUserId(requestDTO.getUserId());

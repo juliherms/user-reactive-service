@@ -14,6 +14,6 @@ public interface UserRepository extends ReactiveCrudRepository<User, UUID> {
 
     @Modifying
     @Query("update TB_USER set balance = balance - :amount where id = :userId and balance >= :amount")
-    Mono<Boolean> updateUserBalance(UUID userId, int amount);
+    Mono<Boolean>  updateUserBalance(UUID userId, int amount);
 
 }
