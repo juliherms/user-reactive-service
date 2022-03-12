@@ -6,7 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Data
 @ToString
@@ -14,8 +13,8 @@ import java.util.UUID;
 public class UserTransaction {
 
     @Id
-    private UUID id;
-    private UUID userId;
+    private Integer id;
+    private Integer userId;
     private Integer amount;
     private LocalDateTime transactionDate;
 }

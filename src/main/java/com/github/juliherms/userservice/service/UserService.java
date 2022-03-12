@@ -21,7 +21,7 @@ public class UserService {
                 .map(EntityDTOUtil::toDTO);
     }
 
-    public Mono<UserDTO> getUserById(final UUID userId){
+    public Mono<UserDTO> getUserById(final Integer userId){
         return this.userRepository.findById(userId)
                 .map(EntityDTOUtil::toDTO);
     }
@@ -33,7 +33,7 @@ public class UserService {
                 .map(EntityDTOUtil::toDTO);
     }
 
-    public Mono<UserDTO> updateUser(UUID id, Mono<UserDTO> userDTOMono){
+    public Mono<UserDTO> updateUser(Integer id, Mono<UserDTO> userDTOMono){
         return this.userRepository.findById(id)
                 .flatMap(u -> userDTOMono
                         .map(EntityDTOUtil::toEntity)
@@ -42,7 +42,7 @@ public class UserService {
                 .map(EntityDTOUtil::toDTO);
     }
 
-    public Mono<Void> deleteUser(UUID id){
+    public Mono<Void> deleteUser(Integer id){
         return this.userRepository.deleteById(id);
     }
 }

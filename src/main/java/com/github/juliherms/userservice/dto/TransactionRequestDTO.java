@@ -9,7 +9,7 @@ import java.util.UUID;
 @ToString
 public class TransactionRequestDTO {
 
-    private UUID userId;
+    private Integer userId;
     private Integer amount;
 }
 

@@ -23,7 +23,8 @@ public class UserController {
         return this.service.all();
     }
 
-    public Mono<ResponseEntity<UserDTO>> getUserById(@PathVariable UUID id){
+    @GetMapping("{id}")
+    public Mono<ResponseEntity<UserDTO>> getUserById(@PathVariable Integer id){
         return this.service.getUserById(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -35,14 +36,14 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public Mono<ResponseEntity<UserDTO>> updateUser(@PathVariable UUID id, @RequestBody Mono<UserDTO> userDTOMono){
+    public Mono<ResponseEntity<UserDTO>> updateUser(@PathVariable Integer id, @RequestBody Mono<UserDTO> userDTOMono){
         return this.service.updateUser(id,userDTOMono)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("{id}")
-    public Mono<Void> deleteUser(@PathVariable UUID id){
+    public Mono<Void> deleteUser(@PathVariable Integer id){
         return this.service.deleteUser(id);
     }
 }

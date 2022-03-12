@@ -5,7 +5,7 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.UUID;
+import java.util.UUID;;
 
 @Data
 @ToString
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class User {
 
     @Id
-    private UUID id;
+    private Integer id;
     private String name;
     private Integer balance;
 }
