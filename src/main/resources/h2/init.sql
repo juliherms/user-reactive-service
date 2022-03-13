@@ -10,5 +10,6 @@ create table TB_USER_TRANSACTION (
     user_id bigint,
     amount int,
     transaction_date timestamp,
-    foreign key (user_id) references TB_USER(id)
+    foreign key (user_id) references TB_USER(id) on delete cascade
+    -- foreign key (user_id) references TB_USER(id) - REMOVE USER BUT MAINTAIN HISTORY TRANSACTION
 );
