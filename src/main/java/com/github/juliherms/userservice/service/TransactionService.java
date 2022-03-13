@@ -3,11 +3,13 @@ package com.github.juliherms.userservice.service;
 import com.github.juliherms.userservice.dto.TransactionRequestDTO;
 import com.github.juliherms.userservice.dto.TransactionResponseDTO;
 import com.github.juliherms.userservice.dto.TransactionStatus;
+import com.github.juliherms.userservice.entity.UserTransaction;
 import com.github.juliherms.userservice.repository.UserRepository;
 import com.github.juliherms.userservice.repository.UserTransactionRepository;
 import com.github.juliherms.userservice.util.EntityDTOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -34,5 +36,14 @@ public class TransactionService {
                 .flatMap(this.transactionRepository::save)
                 .map(ut -> EntityDTOUtil.toDTO(requestDTO, TransactionStatus.APPROVED))
                 .defaultIfEmpty(EntityDTOUtil.toDTO(requestDTO,TransactionStatus.DECLINED));
+    }
+
+    /**
+     * Method responsbile to list all transactions by userId
+     * @param userId
+     * @return
+     */
+    public Flux<UserTransaction> getByUserId(int userId){
+        return  this.transactionRepository.findByUserId(userId);
     }
 }
